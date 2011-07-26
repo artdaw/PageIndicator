@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Indicator Demo Page</title>
+	<link rel="stylesheet" href="../src/pageIndicator.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="demo.css" type="text/css" media="screen">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="../src/pageIndicator.js"></script>
+</head>
+<body>
+	<h1>Simple Page Indicator</h1>
+	<p>
+		<pre>$('#slides').pageIndicator({'width' : '150px', 'height' : '150px'});</pre>
+	</p>
+	<div id="slides">
+		<img src="images/doggie.jpg" />
+		<img src="images/puppy_love.jpg" />
+		<img src="images/fancy_dogs.jpg" />
+		<img src="images/lazy_dogs.jpg" />
+	</div>
+	<script type="text/javascript">
+		$('#slides').pageIndicator({'width' : '400px', 'height' : '300px'});
+	</script>  
+	<h6>
+		All images belongs to <a href="http://dribble.com">dribble.com</a>
+	</h6>
+</body>
+</html>

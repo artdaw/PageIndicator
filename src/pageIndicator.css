@@ -1,0 +1,20 @@
+.pageIndicator_scroller {
+	overflow: hidden;
+	position: relative;
+}
+.pageIndicator_container {
+	left: 0;
+	position: absolute;
+}
+.pageIndicator_bubble {
+	display: inline-block;
+	background: #ccc;
+	height: 10px;
+	width: 10px;
+	border-radius: 5px;
+	margin: 0 5px 0 0;
+	cursor: pointer;
+}
+.pageIndicator_bubble_active {
+	background: #000;
+}
