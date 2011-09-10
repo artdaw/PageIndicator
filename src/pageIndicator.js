@@ -12,19 +12,26 @@
 				// build element specific options
 				var options = $.meta ? $.extend({}, opts, $this.data()) : opts;
 
+				$this.addClass('pageIndicator');
+				$this.css({
+					'width'	: options.width 
+				});
+
 				// create bubble line
 				var bubbleLine = createBubblesLine($this.children().length);
 
 				// create container for slides
-				var containerWithChildren = createContainerWithChildren($this, options); 
-				$this.append(containerWithChildren).append(bubbleLine);
+				var containerWithChildren = createContainerWithChildren($this, options);
+					
+				$this.append(containerWithChildren)
+					 .append(bubbleLine);
 
 				//add bubble line listeners	
 				$(bubbleLine.children()).bind('click.pageIndicator', function(){
 					var activeBubbleIndex = $(this).siblings('li.pageIndicator_bubble_active').index();
 					var currentBubbleIndex = $(this).index();
 					var step = currentBubbleIndex - activeBubbleIndex;
-					containerWithChildren.animate({"left": "-="+ (parseNumberFromOption(options.width) * step) +"px"}, "slow")
+					containerWithChildren.children('.pageIndicator_container').animate({"left": "-="+ (parseNumberFromOption(options.width) * step) +"px"}, "slow")
 					
 					// change style of bubble
 					$(this).siblings().removeClass('pageIndicator_bubble_active');
@@ -65,8 +72,9 @@
 * Creates container for children of scroller 
 */
 function createContainerWithChildren(obj, options) {
+	
 	// scroller wrapper styles
-	var scroller = obj;
+	var scroller = $('<div>');
 	scroller.addClass('pageIndicator_scroller');
 	scroller.css({
 		'height' : options.height,
@@ -74,21 +82,24 @@ function createContainerWithChildren(obj, options) {
 	});
 
 	// elments to show styles
-	scroller.children().css({
+	obj.children().css({
 		'float': 'left',
+		'display': 'block',
 		'width': options.width
 	})
 
 	// container for elements
 	var container = $('<div>');
 	container.addClass('pageIndicator_container');	
-	container_width = parseNumberFromOption(options.width) * scroller.children().length;
+	container_width = parseNumberFromOption(options.width) * obj.children().length;
 	container.css({
 		'width': container_width
 	});
 
 	// wraps children 
-	return container.append(scroller.children());
+	container.append(obj.children());
+	scroller.append(container);
+	return scroller;
 }
 
 function parseNumberFromOption(option) {

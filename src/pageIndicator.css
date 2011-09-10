@@ -6,6 +6,11 @@
 	left: 0;
 	position: absolute;
 }
+.pageIndicator_bubbleLine {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
 .pageIndicator_bubble {
 	display: inline-block;
 	background: #ccc;
